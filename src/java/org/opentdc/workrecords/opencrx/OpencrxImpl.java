@@ -1,40 +1,46 @@
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Arbalo AG
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package org.opentdc.workrecords.opencrx;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.logging.Logger;
 
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 
-import org.opencrx.kernel.account1.jmi1.Account;
-import org.opencrx.kernel.activity1.cci2.ActivityQuery;
-import org.opencrx.kernel.activity1.cci2.ActivityTrackerQuery;
-import org.opencrx.kernel.activity1.cci2.ActivityTypeQuery;
-import org.opencrx.kernel.activity1.jmi1.AccountAssignmentActivityGroup;
-import org.opencrx.kernel.activity1.jmi1.Activity;
-import org.opencrx.kernel.activity1.jmi1.ActivityCreator;
-import org.opencrx.kernel.activity1.jmi1.ActivityTracker;
-import org.opencrx.kernel.activity1.jmi1.ActivityType;
-import org.opencrx.kernel.activity1.jmi1.NewActivityParams;
-import org.opencrx.kernel.activity1.jmi1.NewActivityResult;
-import org.opencrx.kernel.utils.Utils;
 import org.openmdx.base.exception.ServiceException;
 import org.openmdx.base.naming.Path;
-import org.opentdc.exception.DuplicateException;
-import org.opentdc.exception.NotFoundException;
-import org.opentdc.exception.NotImplementedException;
-import org.opentdc.exception.ValidationException;
-import org.opentdc.workrecords.StorageProvider;
+import org.opentdc.service.exception.DuplicateException;
+import org.opentdc.service.exception.NotFoundException;
+import org.opentdc.service.exception.NotImplementedException;
+import org.opentdc.workrecords.ServiceProvider;
 import org.opentdc.workrecords.WorkRecordModel;
-import org.w3c.spi2.Datatypes;
-import org.w3c.spi2.Structures;
 
-public class OpencrxImpl extends StorageProvider {
+public class OpencrxImpl implements ServiceProvider {
+	
 	public static final String XRI_ACTIVITY_SEGMENT = "xri://@openmdx*org.opencrx.kernel.activity1";
 	public static final String XRI_ACCOUNT_SEGMENT = "xri://@openmdx*org.opencrx.kernel.account1";
 	public static final short ACTIVITY_GROUP_TYPE_PROJECT = 40;
@@ -54,11 +60,10 @@ public class OpencrxImpl extends StorageProvider {
 	private static String mimeType = null;
 
 	// instance variables
-
+	protected Logger logger = Logger.getLogger(this.getClass().getName());
+	
 	public OpencrxImpl(ServletContext context) {
 		logger.info("> OpencrxImpl()");
-
-		super.initStorageProvider();
 
 		if (url == null) {
 			url = context.getInitParameter("backend.url");
