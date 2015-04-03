@@ -100,7 +100,12 @@ public class OpencrxServiceProvider implements ServiceProvider {
 	 * @return a list of all workrecords.
 	 */
 	@Override
-	public ArrayList<WorkRecordModel> listWorkRecords() {
+	public ArrayList<WorkRecordModel> listWorkRecords(
+		String queryType,
+		String query,
+		long position,
+		long size
+	) {
 		// TODO: implement listWorkRecords
 		logger.info("listWorkRecords() -> " + countWorkRecords() + " workrecords");
 		throw new NotImplementedException("listWorkRecords is not yet implemented");
@@ -146,7 +151,10 @@ public class OpencrxServiceProvider implements ServiceProvider {
 	}
 
 	@Override
-	public WorkRecordModel updateWorkRecord(WorkRecordModel workrecord) throws NotFoundException {
+	public WorkRecordModel updateWorkRecord(
+		String id,
+		WorkRecordModel workrecord
+	) throws NotFoundException {
 		WorkRecordModel _workrecord = null;
 		// TODO implement updateWorkRecord()
 		throw new NotImplementedException(
