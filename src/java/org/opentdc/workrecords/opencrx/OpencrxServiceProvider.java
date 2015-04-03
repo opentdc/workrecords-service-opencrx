@@ -60,7 +60,7 @@ public class OpencrxServiceProvider implements ServiceProvider {
 	private static String mimeType = null;
 
 	// instance variables
-	protected Logger logger = Logger.getLogger(this.getClass().getName());
+	protected static final Logger logger = Logger.getLogger(OpencrxServiceProvider.class.getName());
 	
 	public OpencrxServiceProvider(
 		ServletContext context,
