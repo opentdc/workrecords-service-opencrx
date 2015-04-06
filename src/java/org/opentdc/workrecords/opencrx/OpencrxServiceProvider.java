@@ -39,13 +39,6 @@ import org.opentdc.workrecords.WorkRecordModel;
 
 public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider implements ServiceProvider {
 	
-	public static final short ACTIVITY_GROUP_TYPE_PROJECT = 40;
-	public static final short ACCOUNT_ROLE_CUSTOMER = 100;
-	public static final short ACTIVITY_CLASS_INCIDENT = 2;
-	public static final short ICAL_TYPE_NA = 0;
-	public static final short ICAL_CLASS_NA = 0;
-	public static final short ICAL_TYPE_VEVENT = 1;
-
 	// instance variables
 	protected static final Logger logger = Logger.getLogger(OpencrxServiceProvider.class.getName());
 	
