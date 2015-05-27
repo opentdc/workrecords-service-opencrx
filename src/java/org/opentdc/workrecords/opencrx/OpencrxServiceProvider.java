@@ -34,6 +34,7 @@ import org.opentdc.opencrx.AbstractOpencrxServiceProvider;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.NotImplementedException;
+import org.opentdc.service.exception.ValidationException;
 import org.opentdc.workrecords.ServiceProvider;
 import org.opentdc.workrecords.WorkRecordModel;
 
@@ -63,7 +64,6 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		long size
 	) {
 		// TODO: implement listWorkRecords
-		logger.info("listWorkRecords() -> " + countWorkRecords() + " workrecords");
 		throw new NotImplementedException("listWorkRecords is not yet implemented");
 	}
 
@@ -76,16 +76,16 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 *             if a workrecord with the same ID already exists.
 	 */
 	@Override
-	public WorkRecordModel createWorkRecord(WorkRecordModel workrecord) throws DuplicateException {
+	public WorkRecordModel createWorkRecord(
+			WorkRecordModel workrecord) 
+		throws DuplicateException, ValidationException {
 		if (readWorkRecord(workrecord.getId()) != null) {
 			// object with same ID exists already
 			throw new DuplicateException();
 		}
 		// TODO: implement createWorkRecord
-		logger.info("createWorkRecord() -> " + countWorkRecords() + " workrecords");
 		throw new NotImplementedException(
 			"method createWorkRecord is not yet implemented for opencrx storage");
-		// logger.info("createWorkRecord() -> " + workrecord);
 	}
 
 	/**
@@ -98,12 +98,10 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 *             if there exists no WorkRecord with this ID
 	 */
 	@Override
-	public WorkRecordModel readWorkRecord(String xri) throws NotFoundException {
-		WorkRecordModel _workrecord = null;
+	public WorkRecordModel readWorkRecord(String id) throws NotFoundException {
 		// TODO: implement readWorkRecord()
 		throw new NotImplementedException(
 			"method readWorkRecord() is not yet implemented for opencrx storage");
-		// logger.info("readWorkRecord(" + xri + ") -> " + _workrecord);
 	}
 
 	@Override
@@ -111,7 +109,6 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		String id,
 		WorkRecordModel workrecord
 	) throws NotFoundException {
-		WorkRecordModel _workrecord = null;
 		// TODO implement updateWorkRecord()
 		throw new NotImplementedException(
 				"method updateWorkRecord() is not yet implemented for opencrx storage.");
@@ -123,15 +120,4 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		throw new NotImplementedException(
 				"method deleteWorkRecord() is not yet implemented for opencrx storage.");
 	}
-
-	@Override
-	public int countWorkRecords() {
-		int _count = -1;
-		// TODO: implement countWorkRecords()
-		throw new NotImplementedException(
-				"method countWorkRecords() is not yet implemented for opencrx storage.");
-		// logger.info("countWorkRecords() = " + _count);
-		// return _count;
-	}
-
 }
