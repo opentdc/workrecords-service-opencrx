@@ -32,6 +32,8 @@ import javax.servlet.ServletContext;
 import org.openmdx.base.exception.ServiceException;
 import org.opentdc.opencrx.AbstractOpencrxServiceProvider;
 import org.opentdc.service.exception.DuplicateException;
+import org.opentdc.service.exception.InternalServerErrorException;
+import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.NotImplementedException;
 import org.opentdc.service.exception.ValidationException;
@@ -98,7 +100,9 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 *             if there exists no WorkRecord with this ID
 	 */
 	@Override
-	public WorkRecordModel readWorkRecord(String id) throws NotFoundException {
+	public WorkRecordModel readWorkRecord(
+			String id) 
+		throws NotFoundException {
 		// TODO: implement readWorkRecord()
 		throw new NotImplementedException(
 			"method readWorkRecord() is not yet implemented for opencrx storage");
@@ -108,14 +112,16 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	public WorkRecordModel updateWorkRecord(
 		String id,
 		WorkRecordModel workrecord
-	) throws NotFoundException {
+	) throws NotFoundException, NotAllowedException {
 		// TODO implement updateWorkRecord()
 		throw new NotImplementedException(
 				"method updateWorkRecord() is not yet implemented for opencrx storage.");
 	}
 
 	@Override
-	public void deleteWorkRecord(String id) throws NotFoundException {
+	public void deleteWorkRecord(
+			String id) 
+			throws NotFoundException, InternalServerErrorException {
 		// TODO implement deleteWorkRecord()
 		throw new NotImplementedException(
 				"method deleteWorkRecord() is not yet implemented for opencrx storage.");
