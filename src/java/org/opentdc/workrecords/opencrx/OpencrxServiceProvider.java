@@ -33,7 +33,6 @@ import org.openmdx.base.exception.ServiceException;
 import org.opentdc.opencrx.AbstractOpencrxServiceProvider;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.InternalServerErrorException;
-import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.NotImplementedException;
 import org.opentdc.service.exception.ValidationException;
@@ -112,7 +111,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	public WorkRecordModel updateWorkRecord(
 		String id,
 		WorkRecordModel workrecord
-	) throws NotFoundException, NotAllowedException {
+	) throws NotFoundException, ValidationException {
 		// TODO implement updateWorkRecord()
 		throw new NotImplementedException(
 				"method updateWorkRecord() is not yet implemented for opencrx storage.");
