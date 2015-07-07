@@ -101,7 +101,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		workRecordModel.setStartAt(workRecord.getStartedAt());
 		BigDecimal quantity = workRecord.getQuantity();
 		workRecordModel.setDurationHours(quantity.intValue());
-		workRecordModel.setDurationMinutes(quantity.subtract(new BigDecimal(quantity.toBigInteger())).multiply(new BigDecimal(60.0)).intValue());
+		workRecordModel.setDurationMinutes(quantity.subtract(new BigDecimal(quantity.toBigInteger())).multiply(new BigDecimal(60.0)).add(new BigDecimal(0.5)).intValue());
 		workRecordModel.setRateId(workRecord.getUserString0());
 		workRecordModel.setResourceId(resource.refGetPath().getLastSegment().toClassicRepresentation());
 		return workRecordModel;
