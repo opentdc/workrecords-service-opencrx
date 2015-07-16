@@ -102,7 +102,6 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		BigDecimal quantity = workRecord.getQuantity();
 		workRecordModel.setDurationHours(quantity.intValue());
 		workRecordModel.setDurationMinutes(quantity.subtract(new BigDecimal(quantity.toBigInteger())).multiply(new BigDecimal(60.0)).add(new BigDecimal(0.5)).intValue());
-		workRecordModel.setRateId(workRecord.getUserString0());
 		workRecordModel.setResourceId(resource.refGetPath().getLastSegment().toClassicRepresentation());
 		return workRecordModel;
 	}
@@ -206,9 +205,6 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 		if(workrecord.getResourceId() == null || workrecord.getResourceId().isEmpty()) {
 			throw new ValidationException("workrecord must contain a valid resourceId.");
 		}
-		if(workrecord.getRateId() == null || workrecord.getRateId().isEmpty()) {
-			throw new ValidationException("workrecord must contain a valid rateId.");
-		}
 		if(workrecord.getStartAt() == null) {
 			throw new ValidationException("workrecord must contain a valid startAt date.");
 		}
@@ -232,7 +228,6 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 			pm.currentTransaction().commit();
 			WorkAndExpenseRecord _workRecord = result.getWorkRecord();
 			pm.currentTransaction().begin();
-			_workRecord.setUserString0(workrecord.getRateId());
 			pm.currentTransaction().commit();
 			return this.readWorkRecord(this.getWorkRecordId(_workRecord));
 		} catch(Exception e) {
