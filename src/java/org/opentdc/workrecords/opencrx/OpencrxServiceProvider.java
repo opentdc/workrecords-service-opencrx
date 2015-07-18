@@ -54,6 +54,10 @@ import org.opentdc.workrecords.WorkRecordModel;
 import org.w3c.spi2.Datatypes;
 import org.w3c.spi2.Structures;
 
+/**
+ * WorkRecordsService for openCRX.
+ *
+ */
 public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider implements ServiceProvider {
 	
 	// instance variables
