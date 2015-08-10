@@ -50,6 +50,7 @@ import org.opentdc.service.exception.InternalServerErrorException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 import org.opentdc.workrecords.ServiceProvider;
+import org.opentdc.workrecords.TagRefModel;
 import org.opentdc.workrecords.WorkRecordModel;
 import org.w3c.spi2.Datatypes;
 import org.w3c.spi2.Structures;
@@ -328,6 +329,35 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 				pm.currentTransaction().rollback();
 			} catch(Exception ignore) {}
 		}
+	}
+
+	/************************************** TagRef ************************************/
+	@Override
+	public List<TagRefModel> listTagRefs(String workRecordId, String queryType,
+			String query, int position, int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TagRefModel createTagRef(String workRecordId, TagRefModel model)
+			throws DuplicateException, ValidationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TagRefModel readTagRef(String workRecordId, String tagRefId)
+			throws NotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteTagRef(String workRecordId, String tagRefId)
+			throws NotFoundException, InternalServerErrorException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
