@@ -147,15 +147,13 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	}
 
 	/******************************** workrecord *****************************************/
-	/**
-	 * List all workrecords.
-	 * 
-	 * @return a list of all workrecords.
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#listWorkRecords(java.lang.String, java.lang.String, int, int)
 	 */
 	@Override
 	public List<WorkRecordModel> listWorkRecords(
-		String queryType,
 		String query,
+		String queryType,
 		int position,
 		int size
 	) {
@@ -332,32 +330,68 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	}
 
 	/************************************** TagRef ************************************/
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#listTagRefs(java.lang.String, java.lang.String, java.lang.String, int, int)
+	 */
 	@Override
-	public List<TagRefModel> listTagRefs(String workRecordId, String queryType,
-			String query, int position, int size) {
+	public List<TagRefModel> listTagRefs(
+			String workRecordId, 
+			String query,
+			String queryType, 
+			int position, 
+			int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#createTagRef(java.lang.String, org.opentdc.workrecords.TagRefModel)
+	 */
 	@Override
-	public TagRefModel createTagRef(String workRecordId, TagRefModel model)
+	public TagRefModel createTagRef(
+			String workRecordId, 
+			TagRefModel model)
 			throws DuplicateException, ValidationException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#readTagRef(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public TagRefModel readTagRef(String workRecordId, String tagRefId)
+	public TagRefModel readTagRef(
+			String workRecordId, 
+			String tagRefId)
 			throws NotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#deleteTagRef(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public void deleteTagRef(String workRecordId, String tagRefId)
+	public void deleteTagRef(
+			String workRecordId, 
+			String tagRefId)
 			throws NotFoundException, InternalServerErrorException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	// format of String tags ::=  langCode:tagText{.tagText}    e.g.   'en:word,phrase,test'
+	/* (non-Javadoc)
+	 * @see org.opentdc.workrecords.ServiceProvider#addTags(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public List<TagRefModel> addTags(
+			String workRecordId, 
+			String tags) 
+			throws ValidationException 
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
