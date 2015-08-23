@@ -50,7 +50,7 @@ import org.opentdc.service.exception.InternalServerErrorException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 import org.opentdc.workrecords.ServiceProvider;
-import org.opentdc.workrecords.TagRefModel;
+import org.opentdc.service.TagRefModel;
 import org.opentdc.workrecords.WorkRecordModel;
 import org.w3c.spi2.Datatypes;
 import org.w3c.spi2.Structures;
