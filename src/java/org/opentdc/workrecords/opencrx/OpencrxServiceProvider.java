@@ -33,6 +33,7 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.opencrx.kernel.activity1.cci2.WorkAndExpenseRecordQuery;
 import org.opencrx.kernel.activity1.jmi1.Activity;
@@ -180,6 +181,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 */
 	@Override
 	public WorkRecordModel createWorkRecord(
+		HttpServletRequest request,
 		WorkRecordModel workrecord
 	) throws DuplicateException, ValidationException {
 		PersistenceManager pm = this.getPersistenceManager();
@@ -269,6 +271,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 */
 	@Override
 	public WorkRecordModel updateWorkRecord(
+		HttpServletRequest request,
 		String id,
 		WorkRecordModel workrecord
 	) throws NotFoundException, ValidationException {
@@ -349,6 +352,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 */
 	@Override
 	public TagRefModel createTagRef(
+			HttpServletRequest request,
 			String workRecordId, 
 			TagRefModel model)
 			throws DuplicateException, ValidationException {
@@ -386,6 +390,7 @@ public class OpencrxServiceProvider extends AbstractOpencrxServiceProvider imple
 	 */
 	@Override
 	public List<TagRefModel> addTags(
+			HttpServletRequest request,
 			String workRecordId, 
 			String tags) 
 			throws ValidationException 
